@@ -26,11 +26,11 @@ void loop()
   for (int i = 1; i < 4; i++)
   {
     irmsg.radiation_type = i;
-    irmsg.range = cos(tick) + 1;
+    irmsg.range = i * 0.5 * cos(tick / i * 4 + i) - 0.8;
    // irmsg.header.stamp = ros::Time::now();
     ir_pub.publish(&irmsg);
     ultramsg.radiation_type = i;
-    ultramsg.range = sin(tick) + 1;
+    ultramsg.range = i * 0.5 * sin(tick * 4 / i + i) + 0.8;
    // ultramsg.header.stamp = ros::Time::now();
     ultra_pub.publish(&ultramsg);
   }

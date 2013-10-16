@@ -37,6 +37,7 @@ public Q_SLOTS:
 private:
 	Ui::MainWindowDesign ui;
 	QNode qnode;
+    int ir_count, ul_count;
 };
 
 }  // namespace projectrosgui
