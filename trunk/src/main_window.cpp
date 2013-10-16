@@ -2,6 +2,7 @@
 #include <QMessageBox>
 #include <iostream>
 #include "../include/projectrosgui/main_window.hpp"
+#include <math.h>
 
 namespace projectrosgui {
 
@@ -25,18 +26,29 @@ MainWindow::MainWindow(int argc, char** argv, QWidget *parent)
     if ( ui.checkbox_remember_settings->isChecked() ) {
         on_button_connect_clicked(true);
     }
-    this->updatePlot();
+
+    QObject::connect(&qnode, SIGNAL(recieveIRData()), this, SLOT(updateIRPlot()));
+    QObject::connect(&qnode, SIGNAL(recieveUltraData()), this, SLOT(updateUltraPlot()));
 }
 
 MainWindow::~MainWindow() {}
 
 void MainWindow::plotData(QCustomPlot* customPlot, QVector<double> y, QVector<double> t){
     customPlot->addGraph();
+//    double tmax = 0;
+//    for (int i = 0; i < t.size(); i++)
+//        if (t[i] > tmax)
+//            tmax = t[i];
+//    double ymax = 0;
+//    for (int i = 0; i < y.size(); i++)
+//        if (y[i] > ymax)
+//            ymax = y[i];
     customPlot->graph()->setData(t, y);
     customPlot->xAxis->setLabel("x");
     customPlot->yAxis->setLabel("y");
-    customPlot->xAxis->setRange(-1, 1);
-    customPlot->yAxis->setRange(0, 1);
+    customPlot->xAxis->setRange(0, t.back());
+    customPlot->yAxis->setRange(-2, 2);
+    customPlot->replot();
 }
 
 void MainWindow::showNoMasterMessage() {
@@ -58,6 +70,18 @@ void MainWindow::updatePlot(){
     this->plotData(ui.IRPlot_1, y, x);
     this->plotData(ui.IRPlot_2, y, x);
     this->plotData(ui.UltraPlot_3, y, x);
+}
+
+void MainWindow::updateIRPlot(){
+    this->plotData(ui.IRPlot_1, this->qnode.ir1, this->qnode.ir1_t);
+    this->plotData(ui.IRPlot_2, this->qnode.ir2, this->qnode.ir2_t);
+    this->plotData(ui.IRPlot_3, this->qnode.ir3, this->qnode.ir3_t);
+}
+
+void MainWindow::updateUltraPlot(){
+    this->plotData(ui.UltraPlot_1, this->qnode.ul1, this->qnode.ul1_t);
+    this->plotData(ui.UltraPlot_2, this->qnode.ul2, this->qnode.ul2_t);
+    this->plotData(ui.UltraPlot_3, this->qnode.ul3, this->qnode.ul3_t);
 }
 
 void MainWindow::on_button_connect_clicked(bool check ) {
