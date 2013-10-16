@@ -54,18 +54,18 @@ bool QNode::init() {
 }
 
 bool QNode::init(const std::string &master_url, const std::string &host_url) {
-	std::map<std::string,std::string> remappings;
-	remappings["__master"] = master_url;
-	remappings["__hostname"] = host_url;
-	ros::init(remappings,"projectrosgui");
-	if ( ! ros::master::check() ) {
-		return false;
-	}
-	ros::start(); // explicitly needed since our nodehandle is going out of scope.
-	ros::NodeHandle n;
-	// Add your ros communications here.
-	chatter_publisher = n.advertise<std_msgs::String>("chatter", 1000);
-	start();
+//	std::map<std::string,std::string> remappings;
+//	remappings["__master"] = master_url;
+//	remappings["__hostname"] = host_url;
+//	ros::init(remappings,"projectrosgui");
+//	if ( ! ros::master::check() ) {
+//		return false;
+//	}
+//	ros::start(); // explicitly needed since our nodehandle is going out of scope.
+//	ros::NodeHandle n;
+//	// Add your ros communications here.
+//	chatter_publisher = n.advertise<std_msgs::String>("chatter", 1000);
+//	start();
 	return true;
 }
 
