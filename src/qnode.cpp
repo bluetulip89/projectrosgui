@@ -10,7 +10,7 @@ namespace projectrosgui {
 QNode::QNode(int argc, char** argv ) :
 	init_argc(argc),
     init_argv(argv){
-    this->max_data_length = 50;
+    this->max_data_length = 200;
 }
 
 QNode::~QNode() {
@@ -74,26 +74,54 @@ void QNode::run() {
 	Q_EMIT rosShutdown(); // used to signal the gui for a shutdown (useful to roslaunch)
 }
 
-void QNode::addData(QVector<double> &x, double data){
-    x.append(data);
+void QNode::addData(QVector<double> & x, QVector<double> & idx, double data){
+    x.push_back(data);
+    idx.push_back(idx.back() + 1);
+    if (idx.back() - idx.front() > this->max_data_length)
+    {
+        for (int i = 0; i < this->max_data_length; i++)
+        {
+            x[i] = x[i+1];
+            idx[i] = idx[i+1];
+        }
+//        x.pop_front();
+//        idx.pop_front();
+    }
 }
 
 void QNode::irCallback(const sensor_msgs::RangeConstPtr &msg){
     int id = msg->radiation_type;
     switch (id) {
     case 1: {
-        this->ir1.append(msg->range);
-        this->ir1_t.append(this->ir1_t.size());// msg->header.stamp.toSec();
+
+        this->ir1.push_back(msg->range);
+        this->ir1_t.push_back(this->ir1_t.back() + 1);
+        if (this->ir1.size() > this->max_data_length)
+        {
+            this->ir1.pop_front();
+            this->ir1_t.pop_front();
+        }
+
         break;
     }
     case 2: {
-        this->ir2.append(msg->range);
-        this->ir2_t.append(this->ir2_t.size());// msg->header.stamp.toSec();
+        this->ir2.push_back(msg->range);
+        this->ir2_t.push_back(this->ir2_t.back() + 1);
+        if (this->ir2.size() > this->max_data_length)
+        {
+            this->ir2.pop_front();
+            this->ir2_t.pop_front();
+        }
         break;
     }
     case 3: {
-        this->ir3.append(msg->range);
-        this->ir3_t.append(this->ir3_t.size());// msg->header.stamp.toSec();
+        this->ir3.push_back(msg->range);
+        this->ir3_t.push_back(this->ir3_t.back() + 1);
+        if (this->ir3.size() > this->max_data_length)
+        {
+            this->ir3.pop_front();
+            this->ir3_t.pop_front();
+        }
         break;
     }
     }
@@ -107,18 +135,35 @@ void QNode::ultraCallback(const sensor_msgs::RangeConstPtr &msg){
     int id = msg->radiation_type;
     switch (id) {
     case 1: {
-        this->ul1.append(msg->range);
-        this->ul1_t.append(this->ul1_t.size());// msg->header.stamp.toSec();
+
+        this->ul1.push_back(msg->range);
+        this->ul1_t.push_back(this->ul1_t.back() + 1);
+        if (this->ul1.size() > this->max_data_length)
+        {
+            this->ul1.pop_front();
+            this->ul1_t.pop_front();
+        }
+
         break;
     }
     case 2: {
-        this->ul2.append(msg->range);
-        this->ul2_t.append(this->ul2_t.size());// msg->header.stamp.toSec();
+        this->ul2.push_back(msg->range);
+        this->ul2_t.push_back(this->ul2_t.back() + 1);
+        if (this->ul2.size() > this->max_data_length)
+        {
+            this->ul2.pop_front();
+            this->ul2_t.pop_front();
+        }
         break;
     }
     case 3: {
-        this->ul3.append(msg->range);
-        this->ul3_t.append(this->ul3_t.size());// msg->header.stamp.toSec();
+        this->ul3.push_back(msg->range);
+        this->ul3_t.push_back(this->ul3_t.back() + 1);
+        if (this->ul3.size() > this->max_data_length)
+        {
+            this->ul3.pop_front();
+            this->ul3_t.pop_front();
+        }
         break;
     }
     }
