@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1033</width>
-    <height>683</height>
+    <width>1206</width>
+    <height>729</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -33,16 +33,22 @@
             <item>
              <widget class="QLabel" name="label_5">
               <property name="text">
-               <string>TextLabel</string>
+               <string>IR 1</string>
               </property>
              </widget>
             </item>
             <item>
-             <widget class="QCustomPlot" name="widget_2" native="true">
+             <widget class="QCustomPlot" name="IRPlot_1" native="true">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
               <property name="minimumSize">
                <size>
-                <width>250</width>
-                <height>250</height>
+                <width>300</width>
+                <height>300</height>
                </size>
               </property>
              </widget>
@@ -54,16 +60,22 @@
             <item>
              <widget class="QLabel" name="label_6">
               <property name="text">
-               <string>TextLabel</string>
+               <string>IR 2</string>
               </property>
              </widget>
             </item>
             <item>
-             <widget class="QCustomPlot" name="widget_3" native="true">
+             <widget class="QCustomPlot" name="IRPlot_2" native="true">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
               <property name="minimumSize">
                <size>
-                <width>250</width>
-                <height>250</height>
+                <width>300</width>
+                <height>300</height>
                </size>
               </property>
              </widget>
@@ -75,16 +87,22 @@
             <item>
              <widget class="QLabel" name="label_4">
               <property name="text">
-               <string>TextLabel</string>
+               <string>IR 3</string>
               </property>
              </widget>
             </item>
             <item>
-             <widget class="QCustomPlot" name="widget" native="true">
+             <widget class="QCustomPlot" name="IRPlot_3" native="true">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
               <property name="minimumSize">
                <size>
-                <width>250</width>
-                <height>250</height>
+                <width>300</width>
+                <height>300</height>
                </size>
               </property>
              </widget>
@@ -100,16 +118,22 @@
             <item>
              <widget class="QLabel" name="label_8">
               <property name="text">
-               <string>TextLabel</string>
+               <string>Ultrasound 1</string>
               </property>
              </widget>
             </item>
             <item>
-             <widget class="QCustomPlot" name="widget_4" native="true">
+             <widget class="QCustomPlot" name="UltraPlot_1" native="true">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
               <property name="minimumSize">
                <size>
-                <width>250</width>
-                <height>250</height>
+                <width>300</width>
+                <height>300</height>
                </size>
               </property>
              </widget>
@@ -121,16 +145,22 @@
             <item>
              <widget class="QLabel" name="label_9">
               <property name="text">
-               <string>TextLabel</string>
+               <string>Ultrasound 2</string>
               </property>
              </widget>
             </item>
             <item>
-             <widget class="QCustomPlot" name="widget_5" native="true">
+             <widget class="QCustomPlot" name="UltraPlot_2" native="true">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
               <property name="minimumSize">
                <size>
-                <width>250</width>
-                <height>250</height>
+                <width>300</width>
+                <height>300</height>
                </size>
               </property>
              </widget>
@@ -142,19 +172,24 @@
             <item>
              <widget class="QLabel" name="label_10">
               <property name="text">
-               <string>TextLabel</string>
+               <string>Ultrasound 3</string>
               </property>
              </widget>
             </item>
             <item>
-             <widget class="QCustomPlot" name="widget_6" native="true">
+             <widget class="QCustomPlot" name="UltraPlot_3" native="true">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
               <property name="minimumSize">
                <size>
-                <width>250</width>
-                <height>250</height>
+                <width>300</width>
+                <height>300</height>
                </size>
               </property>
-              <zorder>label_10</zorder>
              </widget>
             </item>
            </layout>
@@ -165,8 +200,17 @@
       </item>
       <item>
        <layout class="QVBoxLayout" name="verticalLayout_10">
+        <property name="spacing">
+         <number>4</number>
+        </property>
         <item>
          <widget class="QLabel" name="label">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
           <property name="frameShape">
            <enum>QFrame::StyledPanel</enum>
           </property>
@@ -180,6 +224,12 @@
         </item>
         <item>
          <widget class="QLineEdit" name="line_edit_master">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
           <property name="text">
            <string>http://192.168.1.2:11311/</string>
           </property>
@@ -187,6 +237,12 @@
         </item>
         <item>
          <widget class="QLabel" name="label_2">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
           <property name="frameShape">
            <enum>QFrame::StyledPanel</enum>
           </property>
@@ -200,6 +256,12 @@
         </item>
         <item>
          <widget class="QLineEdit" name="line_edit_host">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
           <property name="text">
            <string>192.168.1.67</string>
           </property>
@@ -207,6 +269,12 @@
         </item>
         <item>
          <widget class="QLabel" name="label_3">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
           <property name="frameShape">
            <enum>QFrame::StyledPanel</enum>
           </property>
@@ -222,6 +290,12 @@
          <widget class="QLineEdit" name="line_edit_topic">
           <property name="enabled">
            <bool>false</bool>
+          </property>
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
           </property>
           <property name="text">
            <string>unused</string>
@@ -254,7 +328,7 @@
            <bool>true</bool>
           </property>
           <property name="sizePolicy">
-           <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+           <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
             <horstretch>0</horstretch>
             <verstretch>0</verstretch>
            </sizepolicy>
@@ -272,18 +346,31 @@
         </item>
         <item>
          <widget class="QLabel" name="label_7">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
           <property name="text">
            <string>Command History</string>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QListView" name="view_logging"/>
+         <widget class="QListView" name="view_logging">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+         </widget>
         </item>
         <item>
          <widget class="QPushButton" name="quit_button">
           <property name="sizePolicy">
-           <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+           <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
             <horstretch>0</horstretch>
             <verstretch>0</verstretch>
            </sizepolicy>
@@ -304,7 +391,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1033</width>
+     <width>1206</width>
      <height>25</height>
     </rect>
    </property>

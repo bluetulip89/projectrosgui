@@ -1,30 +1,11 @@
-/**
- * @file /src/main_window.cpp
- *
- * @brief Implementation for the qt gui.
- *
- * @date February 2011
- **/
-/*****************************************************************************
-** Includes
-*****************************************************************************/
-
 #include <QtGui>
 #include <QMessageBox>
 #include <iostream>
 #include "../include/projectrosgui/main_window.hpp"
 
-/*****************************************************************************
-** Namespaces
-*****************************************************************************/
-
 namespace projectrosgui {
 
 using namespace Qt;
-
-/*****************************************************************************
-** Implementation [MainWindow]
-*****************************************************************************/
 
 MainWindow::MainWindow(int argc, char** argv, QWidget *parent)
 	: QMainWindow(parent)
@@ -38,25 +19,25 @@ MainWindow::MainWindow(int argc, char** argv, QWidget *parent)
 //	ui.tab_manager->setCurrentIndex(0); // ensure the first tab is showing - qt-designer should have this already hardwired, but often loses it (settings?).
     QObject::connect(&qnode, SIGNAL(rosShutdown()), this, SLOT(close()));
 
-	/*********************
-	** Logging
-	**********************/
 	ui.view_logging->setModel(qnode.loggingModel());
     QObject::connect(&qnode, SIGNAL(loggingUpdated()), this, SLOT(updateLoggingView()));
 
-    /*********************
-    ** Auto Start
-    **********************/
     if ( ui.checkbox_remember_settings->isChecked() ) {
         on_button_connect_clicked(true);
     }
+    this->updatePlot();
 }
 
 MainWindow::~MainWindow() {}
 
-/*****************************************************************************
-** Implementation [Slots]
-*****************************************************************************/
+void MainWindow::plotData(QCustomPlot* customPlot, QVector<double> y, QVector<double> t){
+    customPlot->addGraph();
+    customPlot->graph()->setData(t, y);
+    customPlot->xAxis->setLabel("x");
+    customPlot->yAxis->setLabel("y");
+    customPlot->xAxis->setRange(-1, 1);
+    customPlot->yAxis->setRange(0, 1);
+}
 
 void MainWindow::showNoMasterMessage() {
 	QMessageBox msgBox;
@@ -65,10 +46,19 @@ void MainWindow::showNoMasterMessage() {
     close();
 }
 
-/*
- * These triggers whenever the button is clicked, regardless of whether it
- * is already checked or not.
- */
+void MainWindow::updatePlot(){
+    // generate some data:
+    QVector<double> x(101), y(101); // initialize with entries 0..100
+    for (int i=0; i<101; ++i)
+    {
+      x[i] = i/50.0 - 1; // x goes from -1 to 1
+      y[i] = x[i]*x[i];  // let's plot a quadratic function
+    }
+    //this->plotData(ui);
+    this->plotData(ui.IRPlot_1, y, x);
+    this->plotData(ui.IRPlot_2, y, x);
+    this->plotData(ui.UltraPlot_3, y, x);
+}
 
 void MainWindow::on_button_connect_clicked(bool check ) {
 	if ( ui.checkbox_use_environment->isChecked() ) {
@@ -90,7 +80,6 @@ void MainWindow::on_button_connect_clicked(bool check ) {
 	}
 }
 
-
 void MainWindow::on_checkbox_use_environment_stateChanged(int state) {
 	bool enabled;
 	if ( state == 0 ) {
@@ -103,30 +92,13 @@ void MainWindow::on_checkbox_use_environment_stateChanged(int state) {
 	//ui.line_edit_topic->setEnabled(enabled);
 }
 
-/*****************************************************************************
-** Implemenation [Slots][manually connected]
-*****************************************************************************/
-
-/**
- * This function is signalled by the underlying model. When the model changes,
- * this will drop the cursor down to the last line in the QListview to ensure
- * the user can always see the latest log message.
- */
 void MainWindow::updateLoggingView() {
         ui.view_logging->scrollToBottom();
 }
 
-/*****************************************************************************
-** Implementation [Menu]
-*****************************************************************************/
-
 void MainWindow::on_actionAbout_triggered() {
     QMessageBox::about(this, tr("About ..."),tr("<h2>PACKAGE_NAME Test Program 0.10</h2><p>Copyright Yujin Robot</p><p>This package needs an about description.</p>"));
 }
-
-/*****************************************************************************
-** Implementation [Configuration]
-*****************************************************************************/
 
 void MainWindow::ReadSettings() {
     QSettings settings("Qt-Ros Package", "projectrosgui");
