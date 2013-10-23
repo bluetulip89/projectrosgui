@@ -151,6 +151,7 @@ void loop()
          last_time= millis();
          sensor_read();
      }
+     nh.spinOnce();
  
 }
 

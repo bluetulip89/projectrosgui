@@ -51,7 +51,6 @@
                 <height>250</height>
                </size>
               </property>
-              <zorder>IRPlot_2</zorder>
              </widget>
             </item>
            </layout>
@@ -297,6 +296,26 @@
          </widget>
         </item>
         <item>
+         <widget class="QCheckBox" name="corridorCheck">
+          <property name="layoutDirection">
+           <enum>Qt::RightToLeft</enum>
+          </property>
+          <property name="text">
+           <string>Corridor Following</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QCheckBox" name="obstacleCheck">
+          <property name="layoutDirection">
+           <enum>Qt::RightToLeft</enum>
+          </property>
+          <property name="text">
+           <string>Obstacle Avoidance</string>
+          </property>
+         </widget>
+        </item>
+        <item>
          <widget class="QPushButton" name="button_connect">
           <property name="enabled">
            <bool>true</bool>
@@ -307,11 +326,29 @@
             <verstretch>0</verstretch>
            </sizepolicy>
           </property>
+          <property name="minimumSize">
+           <size>
+            <width>10</width>
+            <height>30</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>200</width>
+            <height>50</height>
+           </size>
+          </property>
           <property name="toolTip">
            <string>Set the target to the current joint trajectory state.</string>
           </property>
           <property name="statusTip">
            <string>Clear all waypoints and set the target to the current joint trajectory state.</string>
+          </property>
+          <property name="layoutDirection">
+           <enum>Qt::RightToLeft</enum>
+          </property>
+          <property name="autoFillBackground">
+           <bool>true</bool>
           </property>
           <property name="text">
            <string>Connect</string>
