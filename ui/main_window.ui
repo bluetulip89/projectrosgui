@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1206</width>
-    <height>729</height>
+    <width>1414</width>
+    <height>629</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -47,10 +47,11 @@
               </property>
               <property name="minimumSize">
                <size>
-                <width>300</width>
-                <height>300</height>
+                <width>250</width>
+                <height>250</height>
                </size>
               </property>
+              <zorder>IRPlot_2</zorder>
              </widget>
             </item>
            </layout>
@@ -74,8 +75,8 @@
               </property>
               <property name="minimumSize">
                <size>
-                <width>300</width>
-                <height>300</height>
+                <width>250</width>
+                <height>250</height>
                </size>
               </property>
              </widget>
@@ -83,7 +84,14 @@
            </layout>
           </item>
           <item>
-           <layout class="QVBoxLayout" name="verticalLayout_8">
+           <layout class="QVBoxLayout" name="verticalLayout_8"/>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_7">
+          <item>
+           <layout class="QVBoxLayout" name="verticalLayout_16">
             <item>
              <widget class="QLabel" name="label_4">
               <property name="text">
@@ -101,22 +109,18 @@
               </property>
               <property name="minimumSize">
                <size>
-                <width>300</width>
-                <height>300</height>
+                <width>250</width>
+                <height>250</height>
                </size>
               </property>
              </widget>
             </item>
            </layout>
           </item>
-         </layout>
-        </item>
-        <item>
-         <layout class="QHBoxLayout" name="horizontalLayout_7">
           <item>
-           <layout class="QVBoxLayout" name="verticalLayout_16">
+           <layout class="QVBoxLayout" name="verticalLayout_15">
             <item>
-             <widget class="QLabel" name="label_8">
+             <widget class="QLabel" name="label_9">
               <property name="text">
                <string>Ultrasound 1</string>
               </property>
@@ -132,8 +136,8 @@
               </property>
               <property name="minimumSize">
                <size>
-                <width>300</width>
-                <height>300</height>
+                <width>250</width>
+                <height>250</height>
                </size>
               </property>
              </widget>
@@ -141,60 +145,30 @@
            </layout>
           </item>
           <item>
-           <layout class="QVBoxLayout" name="verticalLayout_15">
-            <item>
-             <widget class="QLabel" name="label_9">
-              <property name="text">
-               <string>Ultrasound 2</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QCustomPlot" name="UltraPlot_2" native="true">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="minimumSize">
-               <size>
-                <width>300</width>
-                <height>300</height>
-               </size>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </item>
-          <item>
-           <layout class="QVBoxLayout" name="verticalLayout_14">
-            <item>
-             <widget class="QLabel" name="label_10">
-              <property name="text">
-               <string>Ultrasound 3</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QCustomPlot" name="UltraPlot_3" native="true">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="minimumSize">
-               <size>
-                <width>300</width>
-                <height>300</height>
-               </size>
-              </property>
-             </widget>
-            </item>
-           </layout>
+           <layout class="QVBoxLayout" name="verticalLayout_14"/>
           </item>
          </layout>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QVBoxLayout" name="verticalLayout_3">
+        <item>
+         <widget class="QLabel" name="label_8">
+          <property name="text">
+           <string>Task Plot</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QCustomPlot" name="taskPlot" native="true">
+          <property name="minimumSize">
+           <size>
+            <width>550</width>
+            <height>500</height>
+           </size>
+          </property>
+         </widget>
         </item>
        </layout>
       </item>
@@ -391,7 +365,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1206</width>
+     <width>1414</width>
      <height>25</height>
     </rect>
    </property>

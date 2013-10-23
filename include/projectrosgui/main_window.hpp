@@ -28,7 +28,7 @@ public Q_SLOTS:
 	void on_actionAbout_triggered();
 	void on_button_connect_clicked(bool check );
 	void on_checkbox_use_environment_stateChanged(int state);
-    void updatePlot();
+    void updateTaskPlot();
     void updateIRPlot();
     void updateUltraPlot();
 //    void updateStatus();
@@ -39,6 +39,7 @@ private:
 	Ui::MainWindowDesign ui;
 	QNode qnode;
     int ir_count, ul_count;
+    int task_type;
 };
 
 }  // namespace projectrosgui

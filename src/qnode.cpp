@@ -127,7 +127,7 @@ void QNode::ultraCallback(const sensor_msgs::RangeConstPtr &msg){
     }
     std::stringstream ss;
     ss << "Ultra" << id << "Updated" << msg->range;
-//    log(Info,ss.str());
+    log(Info,ss.str());
     emit recieveUltraData();
 }
 
