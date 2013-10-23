@@ -37,6 +37,8 @@ public:
     // Data for the sensors
     QVector<double> ir1, ir2, ir3, ul1, ul2, ul3;
     QVector<double> ir1_t, ir2_t, ir3_t, ul1_t, ul2_t, ul3_t;
+    QVector<double> right_dist, left_dist;
+    QVector<double> right_dist_t, left_dist_t;
     double max_data_length;
 
     // Callback for Recieving Data
