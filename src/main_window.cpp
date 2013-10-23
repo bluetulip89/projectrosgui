@@ -73,8 +73,8 @@ void MainWindow::plotData(QCustomPlot* customPlot, QVector<double> y, QVector<do
             ymin = y[i];
     }
     customPlot->graph(0)->setData(t, y);
-    customPlot->xAxis->setLabel("x");
-    customPlot->yAxis->setLabel("y");
+//    customPlot->xAxis->setLabel("x");
+//    customPlot->yAxis->setLabel("y");
     customPlot->xAxis->setRange(t.front(), t.back());
     customPlot->yAxis->setRange(ymin * 1.5, ymax * 1.5);
     customPlot->replot();
@@ -115,13 +115,14 @@ void MainWindow::updateTaskPlot(){
     }
     else
     {
-
-//        ui.taskPlot->graph(0)->setData(x, y);
-//        x[0] = 2; x[1] = 4;
-//        y[0] = y[1] = -this->qnode.ir3.back();
-//        ui.taskPlot->graph(1)->setData(x, y);
-//        ui.taskPlot->xAxis->setRange(0, 6);
-//        ui.taskPlot->yAxis->setRange(-3, 3);
+        //ui.taskPlot->graph(2)->clearData();
+        //ui.taskPlot->graph(3)->clearData();
+        ui.taskPlot->graph(0)->setData(this->qnode.ir1_t, this->qnode.ir1);
+        ui.taskPlot->graph(1)->setData(this->qnode.right_dist_t, this->qnode.right_dist);
+//        customPlot->xAxis->setLabel("x");
+//        customPlot->yAxis->setLabel("y");
+        ui.taskPlot->xAxis->setRange(this->qnode.ir1_t.front(), this->qnode.ir1_t.back());
+        ui.taskPlot->yAxis->setRange(-200, 200);
     }
     ui.taskPlot->replot();
 }
@@ -159,6 +160,8 @@ void MainWindow::updateUltraPlot(){
 }
 
 void MainWindow::on_button_connect_clicked(bool check ) {
+    if (ui.corridorCheck->isChecked())
+        this->task_type = 1;
 	if ( ui.checkbox_use_environment->isChecked() ) {
 		if ( !qnode.init() ) {
 			showNoMasterMessage();

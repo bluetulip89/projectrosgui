@@ -10,7 +10,7 @@ namespace projectrosgui {
 QNode::QNode(int argc, char** argv ) :
 	init_argc(argc),
     init_argv(argv){
-    this->max_data_length = 50;
+    this->max_data_length = 80;
 }
 
 QNode::~QNode() {
@@ -88,6 +88,7 @@ void QNode::irCallback(const sensor_msgs::RangeConstPtr &msg){
     }
     case 2: {
         this->addData(this->ir2, this->ir2_t, msg->range);
+        this->addData(this->right_dist, this->right_dist_t, double(msg->range) * (-1.0));
         break;
     }
     case 3: {
@@ -96,7 +97,7 @@ void QNode::irCallback(const sensor_msgs::RangeConstPtr &msg){
     }
     }
     std::stringstream ss;
-    ss << "IR" << id << "Updated" << msg->range;
+    ss << "IR" << id << "Updated" << msg->range * (-1.0);
 //    log(Info,ss.str());
     emit recieveIRData();
 }
