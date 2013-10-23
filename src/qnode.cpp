@@ -31,9 +31,10 @@ bool QNode::init() {
 	// Add your ros communications here.
 	chatter_publisher = n.advertise<std_msgs::String>("chatter", 1000);
 
-    command = n.advertise<std_msgs::String>("Command", 1000);
+    command = n.advertise<std_msgs::String>("SensorStatus", 1000);
     ultrasound = n.subscribe("Ultrasound", 1000, &QNode::ultraCallback, this);
     irsensor = n.subscribe("IRSensor", 1000, &QNode::irCallback, this);
+    status = n.subscribe("SensorStatus", 1000, &QNode::statusCallback, this);
 
 	start();
 	return true;
@@ -98,6 +99,14 @@ void QNode::irCallback(const sensor_msgs::RangeConstPtr &msg){
     ss << "IR" << id << "Updated" << msg->range;
 //    log(Info,ss.str());
     emit recieveIRData();
+}
+
+void QNode::statusCallback(const std_msgs::String::ConstPtr &msg)
+{
+    ROS_INFO("Recieved: [%s]", msg->data.c_str());
+    std::stringstream ss;
+    ss << "Recieved: " << msg->data.c_str();
+    log(Info, ss.str());
 }
 
 void QNode::ultraCallback(const sensor_msgs::RangeConstPtr &msg){

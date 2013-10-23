@@ -29,6 +29,7 @@ MainWindow::MainWindow(int argc, char** argv, QWidget *parent)
 
     QObject::connect(&qnode, SIGNAL(recieveIRData()), this, SLOT(updateIRPlot()));
     QObject::connect(&qnode, SIGNAL(recieveUltraData()), this, SLOT(updateUltraPlot()));
+//    QObject::connect(&qnode, SIGNAL(recieveStatus()), this, SLOT(updateStatus()));
 
     ui.IRPlot_1->addGraph();
     ui.IRPlot_2->addGraph();
@@ -88,13 +89,13 @@ void MainWindow::updateIRPlot(){
     this->plotData(ui.IRPlot_2, this->qnode.ir2, this->qnode.ir2_t);
     this->plotData(ui.IRPlot_3, this->qnode.ir3, this->qnode.ir3_t);
 
-    qnode.logging_model.insertRows(qnode.logging_model.rowCount(),1);
-    std::stringstream logging_model_msg;
-    this->ir_count += 1;
-    logging_model_msg << "Updated IR Data Frame: " << this->ir_count + 1;//this->qnode.ir1.size() << " " << this->qnode.ir1_t.size();
-    QVariant new_row(QString(logging_model_msg.str().c_str()));
-    qnode.logging_model.setData(qnode.logging_model.index(qnode.logging_model.rowCount()-1),new_row);
-    ui.view_logging->scrollToBottom();
+//    qnode.logging_model.insertRows(qnode.logging_model.rowCount(),1);
+//    std::stringstream logging_model_msg;
+//    this->ir_count += 1;
+//    logging_model_msg << "Updated IR Data Frame: " << this->ir_count + 1;//this->qnode.ir1.size() << " " << this->qnode.ir1_t.size();
+//    QVariant new_row(QString(logging_model_msg.str().c_str()));
+//    qnode.logging_model.setData(qnode.logging_model.index(qnode.logging_model.rowCount()-1),new_row);
+//    ui.view_logging->scrollToBottom();
 }
 
 void MainWindow::updateUltraPlot(){
@@ -102,13 +103,13 @@ void MainWindow::updateUltraPlot(){
     this->plotData(ui.UltraPlot_2, this->qnode.ul2, this->qnode.ul2_t);
     this->plotData(ui.UltraPlot_3, this->qnode.ul3, this->qnode.ul3_t);
 
-    qnode.logging_model.insertRows(qnode.logging_model.rowCount(),1);
-    std::stringstream logging_model_msg;
-    this->ul_count += 1;
-    logging_model_msg << "Updated Ultra Data Frame: " << this->ul_count;
-    QVariant new_row(QString(logging_model_msg.str().c_str()));
-    qnode.logging_model.setData(qnode.logging_model.index(qnode.logging_model.rowCount()-1),new_row);
-    ui.view_logging->scrollToBottom();
+//    qnode.logging_model.insertRows(qnode.logging_model.rowCount(),1);
+//    std::stringstream logging_model_msg;
+//    this->ul_count += 1;
+//    logging_model_msg << "Updated Ultra Data Frame: " << this->ul_count;
+//    QVariant new_row(QString(logging_model_msg.str().c_str()));
+//    qnode.logging_model.setData(qnode.logging_model.index(qnode.logging_model.rowCount()-1),new_row);
+//    ui.view_logging->scrollToBottom();
 }
 
 void MainWindow::on_button_connect_clicked(bool check ) {
