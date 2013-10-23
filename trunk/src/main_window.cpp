@@ -39,6 +39,22 @@ MainWindow::MainWindow(int argc, char** argv, QWidget *parent)
     ui.taskPlot->addGraph();
     ui.taskPlot->addGraph();
 
+    QPen pen;
+    pen.setWidthF(2.5);
+    ui.IRPlot_1->graph(0)->setPen(pen);
+    ui.IRPlot_2->graph(0)->setPen(pen);
+    ui.IRPlot_3->graph(0)->setPen(pen);
+    ui.UltraPlot_1->graph(0)->setPen(pen);
+
+    pen.setColor(Qt::blue);
+    ui.taskPlot->graph(0)->setPen(pen);
+    pen.setColor(Qt::red);
+    ui.taskPlot->graph(1)->setPen(pen);
+    pen.setColor(Qt::green);
+    ui.taskPlot->graph(2)->setPen(pen);
+    pen.setColor(Qt::black);
+    ui.taskPlot->graph(3)->setPen(pen);
+
     this->ir_count = 0;
     this->ul_count = 0;
     this->task_type = 0;
@@ -95,10 +111,11 @@ void MainWindow::updateTaskPlot(){
             ymax = y[0];
         ui.taskPlot->graph(3)->setData(x, y);
         ui.taskPlot->xAxis->setRange(0, 6);
-        ui.taskPlot->yAxis->setRange(0, 150);
+        ui.taskPlot->yAxis->setRange(0, 180);
     }
     else
     {
+
 //        ui.taskPlot->graph(0)->setData(x, y);
 //        x[0] = 2; x[1] = 4;
 //        y[0] = y[1] = -this->qnode.ir3.back();

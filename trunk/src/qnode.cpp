@@ -132,6 +132,8 @@ void QNode::ultraCallback(const sensor_msgs::RangeConstPtr &msg){
 }
 
 void QNode::log( const LogLevel &level, const std::string &msg) {
+    if (logging_model.rowCount() > 50)
+        logging_model.removeRow(1);
     logging_model.insertRows(logging_model.rowCount(),1);
     std::stringstream logging_model_msg;
     switch ( level ) {
