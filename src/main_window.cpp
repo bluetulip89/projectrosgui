@@ -91,7 +91,7 @@ void MainWindow::updateIRPlot(){
     qnode.logging_model.insertRows(qnode.logging_model.rowCount(),1);
     std::stringstream logging_model_msg;
     this->ir_count += 1;
-    logging_model_msg << "Updated IR Data Frame: " << this->ir_count;
+    logging_model_msg << "Updated IR Data Frame: " << this->ir_count + 1;//this->qnode.ir1.size() << " " << this->qnode.ir1_t.size();
     QVariant new_row(QString(logging_model_msg.str().c_str()));
     qnode.logging_model.setData(qnode.logging_model.index(qnode.logging_model.rowCount()-1),new_row);
     ui.view_logging->scrollToBottom();
@@ -189,6 +189,5 @@ void MainWindow::closeEvent(QCloseEvent *event)
 	WriteSettings();
 	QMainWindow::closeEvent(event);
 }
-
 }  // namespace projectrosgui
 
