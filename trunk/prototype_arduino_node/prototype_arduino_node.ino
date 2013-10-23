@@ -2,11 +2,13 @@
 #include <ros/console.h>
 #include <ros/Time.h>
 #include <sensor_msgs/Range.h>
+#include <std_msgs/String.h>
 
 ros::NodeHandle nh;
 
 sensor_msgs::Range irmsg;
 sensor_msgs::Range ultramsg;
+
 
 ros::Publisher ir_pub("IRSensor", &irmsg);
 ros::Publisher ultra_pub("Ultrasound", &ultramsg);
@@ -36,4 +38,4 @@ void loop()
   }
   nh.spinOnce();
   delay(100);
-}
+}  

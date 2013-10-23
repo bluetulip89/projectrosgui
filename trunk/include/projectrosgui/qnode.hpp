@@ -2,6 +2,7 @@
 #define projectrosgui_QNODE_HPP_
 
 #include <ros/ros.h>
+#include <std_msgs/String.h>
 #include <sensor_msgs/Range.h>
 #include <string>
 #include <QThread>
@@ -41,6 +42,7 @@ public:
     // Callback for Recieving Data
     void irCallback(const sensor_msgs::RangeConstPtr &msg);
     void ultraCallback(const sensor_msgs::RangeConstPtr &msg);
+    void statusCallback(const std_msgs::String::ConstPtr &msg);
 
     QStringListModel logging_model;
 
@@ -49,6 +51,7 @@ Q_SIGNALS:
     void rosShutdown();
     void recieveIRData();
     void recieveUltraData();
+    void recieveStatus();
 
 private:
 	int init_argc;
@@ -58,6 +61,7 @@ private:
     // Message from
     ros::Subscriber irsensor;
     ros::Subscriber ultrasound;
+    ros::Subscriber status;
 
     // Message for
     ros::Publisher command;

@@ -31,6 +31,7 @@ public Q_SLOTS:
     void updatePlot();
     void updateIRPlot();
     void updateUltraPlot();
+//    void updateStatus();
 
     void updateLoggingView(); // no idea why this can't connect automatically
 
