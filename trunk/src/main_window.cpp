@@ -74,33 +74,37 @@ void MainWindow::showNoMasterMessage() {
 void MainWindow::updateTaskPlot(){
     if (this->task_type == 0)
     {
-//        for (int i=0; i<50; ++i)
-//        {
-//          // generate a gaussian distributed random number:
-//          double tmp1 = rand()/(double)RAND_MAX;
-//          double tmp2 = rand()/(double)RAND_MAX;
-//          double r = sqrt(-2*log(tmp1))*cos(2*M_PI*tmp2); // box-muller transform for gaussian distribution
-//          // set y1 to value of y0 plus a random gaussian pertubation:
-//          x1[i] = (i/50.0-0.5)*30+0.25;
-//          y1[i] = sin(x1[i])/x1[i]+r*0.15;
-//          x1[i] *= 1000;
-//          y1err[i] = 0.15;
-//        }
+        double ymax = 0;
         QVector<double> x(2), y(2);
         x[0] = 0; x[1] = 2;
         y[0] = y[1] = this->qnode.ir1.back();
+        if (y[0] > ymax)
+            ymax = y[0];
         ui.taskPlot->graph(0)->setData(x, y);
         x[0] = 2; x[1] = 4;
         y[0] = y[1] = this->qnode.ir2.back();
+        if (y[0] > ymax)
+            ymax = y[0];
         ui.taskPlot->graph(1)->setData(x, y);
         x[0] = 4; x[1] = 6;
         y[0] = y[1] = this->qnode.ir3.back();
         ui.taskPlot->graph(2)->setData(x, y);
         x[0] = 0; x[1] = 6;
         y[0] = y[1] = this->qnode.ul1.back();
+        if (y[0] > ymax)
+            ymax = y[0];
         ui.taskPlot->graph(3)->setData(x, y);
         ui.taskPlot->xAxis->setRange(0, 6);
-        ui.taskPlot->yAxis->setRange(-3, 3);
+        ui.taskPlot->yAxis->setRange(0, 150);
+    }
+    else
+    {
+//        ui.taskPlot->graph(0)->setData(x, y);
+//        x[0] = 2; x[1] = 4;
+//        y[0] = y[1] = -this->qnode.ir3.back();
+//        ui.taskPlot->graph(1)->setData(x, y);
+//        ui.taskPlot->xAxis->setRange(0, 6);
+//        ui.taskPlot->yAxis->setRange(-3, 3);
     }
     ui.taskPlot->replot();
 }
